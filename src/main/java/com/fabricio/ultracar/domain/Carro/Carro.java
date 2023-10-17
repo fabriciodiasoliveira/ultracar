@@ -22,6 +22,7 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 public class Carro {
     public Carro(@Valid DadosCadastroCarro dados) {
+        idCliente = dados.idCliente();
         modelo = dados.modelo();
         cor = dados.cor();
         placa = dados.placa();
@@ -30,6 +31,7 @@ public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+    private String idCliente;
     private String modelo;
     private String cor;
     private String placa;

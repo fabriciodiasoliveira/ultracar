@@ -32,7 +32,7 @@ public class CarroController {
     @Autowired
     private CarroRepository carroRepository;
 
-        @PostMapping
+    @PostMapping
     @Transactional
     public ResponseEntity store(@RequestBody @Valid DadosCadastroCarro dados, UriComponentsBuilder uriBuilder){
         var carro = new Carro(dados);
@@ -50,6 +50,11 @@ public class CarroController {
     public ResponseEntity show(@PathVariable String id){
         var Carro = carroRepository.findById(id);
         return ResponseEntity.ok(Carro);
+    }
+    @GetMapping("{idCliente}")
+    public ResponseEntity showByCliente(@PathVariable String idCliente){
+        List<Carro> carros = carroRepository.findAllByIdCliente(idCliente);
+        return ResponseEntity.ok(carros);
     }
     @PutMapping
     @Transactional

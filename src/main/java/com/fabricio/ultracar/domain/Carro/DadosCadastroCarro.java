@@ -8,6 +8,8 @@ public record DadosCadastroCarro(
     @NotNull
     String cor,
     @NotNull
-    String placa) {
+    String placa,
+    @NotNull
+    String idCliente) {
     
 }
