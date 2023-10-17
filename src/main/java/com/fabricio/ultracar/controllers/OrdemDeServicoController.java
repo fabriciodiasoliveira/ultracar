@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,14 +45,12 @@ public class OrdemDeServicoController {
     }
     @GetMapping
     public ResponseEntity<Page<DadosDetalhamentoOrdemDeServico>> index(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
-        Page<DadosDetalhamentoOrdemDeServico> page = ordemDeServicoRepository.findAll(paginacao).map(DadosDetalhamentoOrdemDeServico::new);
+        Page<DadosDetalhamentoOrdemDeServico> page = ordemDeServicoRepository.findAllByAtivoTrue(paginacao).map(DadosDetalhamentoOrdemDeServico::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("{id}")
-    @Transactional
     public ResponseEntity show(@PathVariable String id){
         var ordemDeServicos = ordemDeServicoRepository.findById(id);
-        System.out.println(ordemDeServicos);
         return ResponseEntity.ok(ordemDeServicos);
     }
     @PutMapping
@@ -60,6 +59,15 @@ public class OrdemDeServicoController {
         List<OrdemDeServico> ordensDeServicos = ordemDeServicoRepository.findAllById(dados.id());
         OrdemDeServico ordemDeServico = ordensDeServicos.get(0);
         ordemDeServico.setDados(dados);
+        ordemDeServicoRepository.save(ordemDeServico);
+        return ResponseEntity.ok(new DadosDetalhamentoOrdemDeServico(ordemDeServico));
+    }
+    @DeleteMapping("{id}")
+    @Transactional
+    public ResponseEntity destroi(@PathVariable String id){
+        List<OrdemDeServico> ordensDeServicos = ordemDeServicoRepository.findAllById(id);
+        OrdemDeServico ordemDeServico = ordensDeServicos.get(0);
+        ordemDeServico.setAtivo(false);
         ordemDeServicoRepository.save(ordemDeServico);
         return ResponseEntity.ok(ordemDeServico);
     }

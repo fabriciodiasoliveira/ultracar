@@ -12,5 +12,8 @@
 /home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/controllers/BookController.java
 /home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/OrdemDeServico/OrdemDeServico.java
 /home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/Cliente/ClienteRepository.java
+/home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/OrdemDeServico/DadosAlteracaoOrdemDeServico.java
+/home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/Cliente/DadosDetalhamentoCliente.java
+/home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/Cliente/DadosCadastroCliente.java
 /home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/Carro/Carro.java
 /home/fabricio/NetBeansProjects/ultracar/src/main/java/com/fabricio/ultracar/domain/OrdemDeServico/OrdemDeServicoRepository.java

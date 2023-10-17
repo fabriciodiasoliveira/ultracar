@@ -1,5 +1,15 @@
 package com.fabricio.ultracar.domain.OrdemDeServico;
 
-public record DadosCadastroOrdemDeServico(String carro_id, String cliente_id, String servicos, String observacoes) {
+import jakarta.validation.constraints.NotNull;
+
+public record DadosCadastroOrdemDeServico(
+    @NotNull
+    String carro_id, 
+    @NotNull
+    String cliente_id, 
+    @NotNull
+    String servicos, 
+    String observacoes, 
+    String valor) {
     
 }

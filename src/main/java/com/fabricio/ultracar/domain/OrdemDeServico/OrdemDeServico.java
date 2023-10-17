@@ -18,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Document(collection = "ultracar")
+@Document(collection = "ordem_de_servicos")
 @EqualsAndHashCode(of = "id")
 public class OrdemDeServico {
     public OrdemDeServico(@Valid DadosCadastroOrdemDeServico dados) {
@@ -26,6 +26,13 @@ public class OrdemDeServico {
         cliente_id = dados.cliente_id();
         servicos = dados.servicos();
         observacoes = dados.observacoes();
+        if(dados.valor() != null){
+            valor = dados.valor();
+        }
+        else{
+            valor = "0";
+        }
+        ativo = true;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +42,17 @@ public class OrdemDeServico {
     private String servicos;
     private String observacoes;
     private String valor;
+    private boolean ativo;
+    
     public void setDados(@Valid DadosAlteracaoOrdemDeServico dados) {
         servicos = dados.servicos();
         observacoes = dados.observacoes();
+        if(dados.valor() != null){
+            valor = dados.valor();
+        }
+        else{
+            valor = "0";
+        }
+        
     }
 }
