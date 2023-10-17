@@ -23,6 +23,7 @@ import com.fabricio.ultracar.domain.Carro.CarroRepository;
 import com.fabricio.ultracar.domain.Carro.DadosAlteracaoCarro;
 import com.fabricio.ultracar.domain.Carro.DadosCadastroCarro;
 import com.fabricio.ultracar.domain.Carro.DadosDetalhamentoCarro;
+import com.fabricio.ultracar.domain.Carro.validadores.ValidadorCarro;
 
 import jakarta.validation.Valid;
 
@@ -32,9 +33,15 @@ public class CarroController {
     @Autowired
     private CarroRepository carroRepository;
 
+    @Autowired
+    private List<ValidadorCarro> validadorCarros;
+
     @PostMapping
     @Transactional
     public ResponseEntity store(@RequestBody @Valid DadosCadastroCarro dados, UriComponentsBuilder uriBuilder){
+        for (ValidadorCarro validadorCarro : validadorCarros) {
+            validadorCarro.validar(dados);
+        }
         var carro = new Carro(dados);
         carroRepository.save(carro);
         var uri = uriBuilder.path("/servicos/{id}").buildAndExpand(carro.getId()).toUri();
