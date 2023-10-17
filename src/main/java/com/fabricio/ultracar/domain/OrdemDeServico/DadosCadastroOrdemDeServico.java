@@ -8,7 +8,7 @@ public record DadosCadastroOrdemDeServico(
     @NotNull
     String cliente_id, 
     @NotNull
-    String servicos, 
+    String servicos,
     String observacoes, 
     String valor) {
     

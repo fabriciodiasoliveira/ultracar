@@ -2,7 +2,6 @@ package com.fabricio.ultracar.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
-import org.springframework.data.domain.Page;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,8 +19,6 @@ import com.fabricio.ultracar.domain.Cliente.ClienteRepository;
 import com.fabricio.ultracar.domain.Cliente.DadosAlteracaoCliente;
 import com.fabricio.ultracar.domain.Cliente.DadosCadastroCliente;
 import com.fabricio.ultracar.domain.Cliente.DadosDetalhamentoCliente;
-import com.fabricio.ultracar.domain.OrdemDeServico.DadosDetalhamentoOrdemDeServico;
-
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -55,18 +52,19 @@ public class ClienteController {
     @PutMapping
     @Transactional
     public ResponseEntity update(@RequestBody @Valid DadosAlteracaoCliente dados){
-        List<Cliente> ordensDeServicos = clienteRepository.findAllById(dados.id());
-        Cliente cliente = ordensDeServicos.get(0);
+        List<Cliente> clientes = clienteRepository.findAllById(dados.id());
+        Cliente cliente = clientes.get(0);
         cliente.setDados(dados);
         clienteRepository.save(cliente);
         return ResponseEntity.ok(new DadosDetalhamentoCliente(cliente));
     }
     @DeleteMapping("{id}")
     @Transactional
-    public ResponseEntity destroi(@PathVariable String id){
+    public ResponseEntity destroy(@PathVariable String id){
         List<Cliente> clientes = clienteRepository.findAllById(id);
         Cliente cliente = clientes.get(0);
-        clienteRepository.deleteById(id);
+        cliente.setAtivo(false);
+        clienteRepository.save(cliente);
         return ResponseEntity.ok(cliente);
     }
 

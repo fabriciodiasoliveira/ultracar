@@ -1,5 +1,7 @@
 package com.fabricio.ultracar.domain.OrdemDeServico;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -32,6 +34,7 @@ public class OrdemDeServico {
         else{
             valor = "0";
         }
+        data = LocalDateTime.now().toString();
         ativo = true;
     }
     @Id
@@ -42,6 +45,7 @@ public class OrdemDeServico {
     private String servicos;
     private String observacoes;
     private String valor;
+    private String data;
     private boolean ativo;
     
     public void setDados(@Valid DadosAlteracaoOrdemDeServico dados) {
