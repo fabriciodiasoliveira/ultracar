@@ -1,0 +1,16 @@
+com/fabricio/ultracar/controllers/ClienteController.class
+com/fabricio/ultracar/UltracarApplication.class
+com/fabricio/ultracar/domain/Cliente/ClienteRepository.class
+com/fabricio/ultracar/controllers/CarroController.class
+com/fabricio/ultracar/controllers/OrdemDeServicoController.class
+com/fabricio/ultracar/domain/OrdemDeServico/DadosCadastroOrdemDeServico.class
+com/fabricio/ultracar/domain/Book/DadosAtualizarBook.class
+com/fabricio/ultracar/domain/OrdemDeServico/DadosDetalhamentoOrdemDeServico.class
+com/fabricio/ultracar/domain/Book/Book.class
+com/fabricio/ultracar/domain/OrdemDeServico/OrdemDeServico.class
+com/fabricio/ultracar/domain/OrdemDeServico/OrdemDeServicoRepository.class
+com/fabricio/ultracar/domain/Carro/CarroRepository.class
+com/fabricio/ultracar/controllers/BookController.class
+com/fabricio/ultracar/domain/Book/BookRepository.class
+com/fabricio/ultracar/domain/Cliente/Cliente.class
+com/fabricio/ultracar/domain/Carro/Carro.class

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-UltracarApplication<ultracar>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fabricio.ultracar.UltracarApplication",
+            "projectName": "ultracar",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
