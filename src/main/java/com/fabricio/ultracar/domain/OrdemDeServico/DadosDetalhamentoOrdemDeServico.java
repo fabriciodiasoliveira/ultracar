@@ -5,5 +5,4 @@ public record DadosDetalhamentoOrdemDeServico(String id, String carro_id, String
     public DadosDetalhamentoOrdemDeServico(OrdemDeServico dados) {
         this(dados.getId(), dados.getCarro_id(), dados.getCliente_id(), dados.getServicos(), dados.getObservacoes());
     }
-    
 }

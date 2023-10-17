@@ -34,4 +34,9 @@ public class OrdemDeServico {
     private String cliente_id;
     private String servicos;
     private String observacoes;
+    private String valor;
+    public void setDados(@Valid DadosAlteracaoOrdemDeServico dados) {
+        servicos = dados.servicos();
+        observacoes = dados.observacoes();
+    }
 }

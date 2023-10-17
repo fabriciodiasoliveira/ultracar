@@ -9,4 +9,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface OrdemDeServicoRepository extends MongoRepository<OrdemDeServico, String> {
     Page<OrdemDeServico> findAll(Pageable paginacao);
+
+    Optional<OrdemDeServico> findById(String id);
+
+    List<OrdemDeServico> findAllById(String id);
+
 }
