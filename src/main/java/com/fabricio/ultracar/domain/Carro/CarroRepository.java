@@ -16,4 +16,6 @@ public interface CarroRepository extends MongoRepository<Carro, String> {
     List<Carro> findAllById(String id);
 
     List<Carro> findAllByIdCliente(String idCliente);
+
+    List<Carro> findAllByAtivoTrue();
 }

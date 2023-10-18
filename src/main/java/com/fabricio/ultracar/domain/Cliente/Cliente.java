@@ -35,8 +35,14 @@ public class Cliente {
     private String endereco;
     private boolean ativo;
     public void setDados(@Valid DadosAlteracaoCliente dados) {
-        nome = dados.nome();
-        identidade = dados.identidade();
-        endereco = dados.endereco();
+        if(dados.nome() != null){
+            nome = dados.nome();
+        }
+        if(identidade != null){
+            identidade = dados.identidade();
+        }
+        if(endereco != null){
+            endereco = dados.endereco();
+        }
     }
 }

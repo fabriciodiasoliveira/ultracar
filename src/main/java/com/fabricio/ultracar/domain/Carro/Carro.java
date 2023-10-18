@@ -37,8 +37,14 @@ public class Carro {
     private String placa;
     private boolean ativo;
     public void setDados(@Valid DadosAlteracaoCarro dados) {
-        modelo = dados.modelo();
-        cor = dados.cor();
-        placa = dados.placa();
+        if(dados.modelo() != null){
+            modelo = dados.modelo();
+        }
+        if(dados.cor() != null){
+            cor = dados.cor();
+        }
+        if(dados.placa() != null){
+            placa = dados.placa();
+        }
     }
 }

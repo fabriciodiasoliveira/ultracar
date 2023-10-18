@@ -24,6 +24,7 @@ import com.fabricio.ultracar.domain.Carro.DadosAlteracaoCarro;
 import com.fabricio.ultracar.domain.Carro.DadosCadastroCarro;
 import com.fabricio.ultracar.domain.Carro.DadosDetalhamentoCarro;
 import com.fabricio.ultracar.domain.Carro.validadores.ValidadorCarro;
+import com.fabricio.ultracar.services.CarroService;
 
 import jakarta.validation.Valid;
 
@@ -35,6 +36,9 @@ public class CarroController {
 
     @Autowired
     private List<ValidadorCarro> validadorCarros;
+
+    @Autowired
+    CarroService carroService;
 
     @PostMapping
     @Transactional
@@ -54,7 +58,7 @@ public class CarroController {
         return carros;
     }
     @GetMapping("paginacao")
-    public ResponseEntity<Page<DadosDetalhamentoCarro>> indexPaginacao(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
+    public ResponseEntity<Page<DadosDetalhamentoCarro>> paginacao(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
         Page<DadosDetalhamentoCarro> page = carroRepository.findAllByAtivoTrue(paginacao).map(DadosDetalhamentoCarro::new);
         return ResponseEntity.ok(page);
     }
@@ -63,9 +67,9 @@ public class CarroController {
         var Carro = carroRepository.findById(id);
         return ResponseEntity.ok(Carro);
     }
-    @GetMapping("{idCliente}")
+    @GetMapping("cliente/{idCliente}")
     public ResponseEntity showByCliente(@PathVariable String idCliente){
-        List<Carro> carros = carroRepository.findAllByIdCliente(idCliente);
+        List<Carro> carros = carroService.carrosDoCliente(idCliente);
         return ResponseEntity.ok(carros);
     }
     @PutMapping
