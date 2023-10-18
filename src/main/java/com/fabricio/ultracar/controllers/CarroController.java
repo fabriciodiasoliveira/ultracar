@@ -49,7 +49,12 @@ public class CarroController {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoCarro(carro));
     }
     @GetMapping
-    public ResponseEntity<Page<DadosDetalhamentoCarro>> index(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
+    public List<Carro> index(){
+        List<Carro> carros = carroRepository.findAll();
+        return carros;
+    }
+    @GetMapping("paginacao")
+    public ResponseEntity<Page<DadosDetalhamentoCarro>> indexPaginacao(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
         Page<DadosDetalhamentoCarro> page = carroRepository.findAllByAtivoTrue(paginacao).map(DadosDetalhamentoCarro::new);
         return ResponseEntity.ok(page);
     }

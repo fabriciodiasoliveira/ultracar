@@ -42,7 +42,12 @@ public class OrdemDeServicoController {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoOrdemDeServico(ordemDeServicos));
     }
     @GetMapping
-    public ResponseEntity<Page<DadosDetalhamentoOrdemDeServico>> index(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
+    public List<OrdemDeServico> index(){
+        List<OrdemDeServico> ordemDeServicos = ordemDeServicoRepository.findAll();
+        return ordemDeServicos;
+    }
+    @GetMapping("paginacao")
+    public ResponseEntity<Page<DadosDetalhamentoOrdemDeServico>> indexPaginacao(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao){
         Page<DadosDetalhamentoOrdemDeServico> page = ordemDeServicoRepository.findAllByAtivoTrue(paginacao).map(DadosDetalhamentoOrdemDeServico::new);
         return ResponseEntity.ok(page);
     }
