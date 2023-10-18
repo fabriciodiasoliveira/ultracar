@@ -6,7 +6,7 @@ public record DadosCadastroOrdemDeServico(
     @NotNull
     String carro_id, 
     @NotNull
-    String cliente_id, 
+    String idCliente, 
     @NotNull
     String servicos,
     String observacoes, 

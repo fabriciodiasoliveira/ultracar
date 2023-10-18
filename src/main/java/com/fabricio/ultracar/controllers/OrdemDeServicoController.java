@@ -18,11 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fabricio.ultracar.domain.Carro.validadores.ValidadorCarro;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosAlteracaoOrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosCadastroOrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosDetalhamentoOrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.OrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.OrdemDeServicoRepository;
+import com.fabricio.ultracar.domain.OrdemDeServico.validadores.ValidadorCarroExiste;
+import com.fabricio.ultracar.domain.OrdemDeServico.validadores.ValidadorOrdemDeServico;
+import com.fabricio.ultracar.services.OrdemDeServicoService;
 
 import jakarta.validation.Valid;
 
@@ -32,9 +36,18 @@ public class OrdemDeServicoController {
     @Autowired
     OrdemDeServicoRepository ordemDeServicoRepository;
 
+    @Autowired
+    OrdemDeServicoService ordemDeServicoService;
+
+    @Autowired
+    private List<ValidadorOrdemDeServico> validadorOrdemDeServicos;
+
     @PostMapping
     @Transactional
     public ResponseEntity store(@RequestBody @Valid DadosCadastroOrdemDeServico dados, UriComponentsBuilder uriBuilder){
+        for (ValidadorOrdemDeServico validadorOrdemDeServico : validadorOrdemDeServicos) {
+            validadorOrdemDeServico.validar(dados);
+        }
         var ordemDeServicos = new OrdemDeServico(dados);
         ordemDeServicoRepository.save(ordemDeServicos);
         var uri = uriBuilder.path("/servicos/{id}").buildAndExpand(ordemDeServicos.getId()).toUri();
@@ -54,6 +67,11 @@ public class OrdemDeServicoController {
     @GetMapping("{id}")
     public ResponseEntity show(@PathVariable String id){
         var ordemDeServicos = ordemDeServicoRepository.findById(id);
+        return ResponseEntity.ok(ordemDeServicos);
+    }
+    @GetMapping("cliente/{id}")
+    public ResponseEntity ordemDeServicoPorCliente(@PathVariable String id){
+        var ordemDeServicos = ordemDeServicoService.ordemDeServicosDoCliente(id);
         return ResponseEntity.ok(ordemDeServicos);
     }
     @PutMapping

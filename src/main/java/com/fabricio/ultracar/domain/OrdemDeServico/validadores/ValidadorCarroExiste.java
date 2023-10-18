@@ -2,12 +2,14 @@ package com.fabricio.ultracar.domain.OrdemDeServico.validadores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.fabricio.ultracar.domain.Carro.Carro;
 import com.fabricio.ultracar.domain.Carro.CarroRepository;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosCadastroOrdemDeServico;
 import com.fabricio.ultracar.infra.exceptions.ValidacaoException;
 
+@Component
 public class ValidadorCarroExiste implements ValidadorOrdemDeServico {
 @Autowired
 CarroRepository carroRepository;

@@ -20,7 +20,6 @@ public class CarroService {
         for (Carro carro : carros) {
             if(carro.getIdCliente().equals(idCliente)){
                 carrosDoCliente.add(carro);
-                System.out.println("passou aqui");
             }
         }
         return carrosDoCliente;

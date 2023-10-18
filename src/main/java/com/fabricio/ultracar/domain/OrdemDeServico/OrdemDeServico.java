@@ -25,7 +25,7 @@ import lombok.Setter;
 public class OrdemDeServico {
     public OrdemDeServico(@Valid DadosCadastroOrdemDeServico dados) {
         carro_id = dados.carro_id();
-        cliente_id = dados.cliente_id();
+        idCliente = dados.idCliente();
         servicos = dados.servicos();
         observacoes = dados.observacoes();
         if(dados.valor() != null){
@@ -41,7 +41,7 @@ public class OrdemDeServico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 	private String carro_id;
-    private String cliente_id;
+    private String idCliente;
     private String servicos;
     private String observacoes;
     private String valor;
