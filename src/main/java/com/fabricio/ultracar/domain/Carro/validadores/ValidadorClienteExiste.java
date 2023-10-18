@@ -22,6 +22,11 @@ ClienteRepository clienteRepository;
         if(clientes.size() == 0){
             throw new ValidacaoException("Cliente não existe");
         }
+
+        var cliente = clientes.get(0);
+        if(cliente.isAtivo() == false){
+            throw new ValidacaoException("Cliente não está ativo");
+        }
     }
     
 }
