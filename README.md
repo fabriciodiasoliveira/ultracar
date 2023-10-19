@@ -97,4 +97,7 @@ GET
 GET
 <br>http://localhost:8080/carros/{id}
 <br>Obtendo um único carro na oficina
-}
+### deletar um carro
+DELETE
+<br>http://localhost:8080/carros/{id}
+<br>Endpoint para a deleção de um carro

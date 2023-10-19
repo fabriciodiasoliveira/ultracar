@@ -67,9 +67,9 @@ public class OrdemDeServicoController {
         var ordemDeServicos = ordemDeServicoRepository.findById(id);
         return ResponseEntity.ok(ordemDeServicos);
     }
-    @GetMapping("cliente/{id}")
-    public ResponseEntity ordemDeServicoPorCliente(@PathVariable String id){
-        var ordemDeServicos = ordemDeServicoService.ordemDeServicosDoCliente(id);
+    @GetMapping("carro/{id}")
+    public ResponseEntity ordemDeServicoPorCarro(@PathVariable String id){
+        var ordemDeServicos = ordemDeServicoService.ordemDeServicosPorCarro(id);
         return ResponseEntity.ok(ordemDeServicos);
     }
     @PutMapping

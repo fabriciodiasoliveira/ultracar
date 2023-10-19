@@ -14,11 +14,11 @@ public class OrdemDeServicoService {
     @Autowired
     OrdemDeServicoRepository ordemDeServicoRepository;
 
-    public List<OrdemDeServico> ordemDeServicosDoCliente(String idCliente){
+    public List<OrdemDeServico> ordemDeServicosPorCarro(String carro_id){
         List<OrdemDeServico> ordemDeServicos = ordemDeServicoRepository.findAll();
         List<OrdemDeServico> ordemDeServicosDoCliente = new ArrayList<OrdemDeServico>();
         for (OrdemDeServico ordemDeServico : ordemDeServicos) {
-            if(ordemDeServico.getIdCliente().equals(idCliente)){
+            if(ordemDeServico.getCarro_id().equals(carro_id)){
                 ordemDeServicosDoCliente.add(ordemDeServico);
             }
         }
