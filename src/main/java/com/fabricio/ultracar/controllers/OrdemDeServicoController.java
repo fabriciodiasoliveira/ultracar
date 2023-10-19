@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.fabricio.ultracar.domain.Carro.validadores.ValidadorCarro;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosAlteracaoOrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosCadastroOrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.DadosDetalhamentoOrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.OrdemDeServico;
 import com.fabricio.ultracar.domain.OrdemDeServico.OrdemDeServicoRepository;
-import com.fabricio.ultracar.domain.OrdemDeServico.validadores.ValidadorCarroExiste;
 import com.fabricio.ultracar.domain.OrdemDeServico.validadores.ValidadorOrdemDeServico;
 import com.fabricio.ultracar.services.OrdemDeServicoService;
 
@@ -86,10 +84,7 @@ public class OrdemDeServicoController {
     @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity destroy(@PathVariable String id){
-        List<OrdemDeServico> ordensDeServicos = ordemDeServicoRepository.findAllById(id);
-        OrdemDeServico ordemDeServico = ordensDeServicos.get(0);
-        ordemDeServico.setAtivo(false);
-        ordemDeServicoRepository.save(ordemDeServico);
-        return ResponseEntity.ok(ordemDeServico);
+        ordemDeServicoRepository.deleteAllById(id);
+        return ResponseEntity.noContent().build();
     }
 }

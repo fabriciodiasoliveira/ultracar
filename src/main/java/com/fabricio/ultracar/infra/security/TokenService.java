@@ -23,7 +23,7 @@ public class TokenService {
         var algoritmo = Algorithm.HMAC256(secret);
         return JWT.create()
             .withIssuer("Fabricio Web")
-            .withClaim("id", usuario.getId())
+            .withClaim("expire", "2 horas")
             .withSubject(usuario.getLogin())
             .withExpiresAt(dataExpiracao())
             .sign(algoritmo);

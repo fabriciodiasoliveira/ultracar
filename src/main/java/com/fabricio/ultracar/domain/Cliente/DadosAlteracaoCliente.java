@@ -7,6 +7,9 @@ public record DadosAlteracaoCliente(
     String id, 
     String nome, 
     String identidade, 
-    String endereco) {
+    String endereco,
+    String email,
+    String telefone
+    ) {
 
 }

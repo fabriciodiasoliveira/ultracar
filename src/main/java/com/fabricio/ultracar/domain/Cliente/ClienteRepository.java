@@ -11,6 +11,8 @@ public interface ClienteRepository extends MongoRepository<Cliente, String> {
     List<Cliente> findAllById(String id);
 
     List<Cliente> findAll();
+
+	void deleteAllById(String id);
     
     // Page<Cliente> findAllByAtivoTrue(Pageable paginacao);
 

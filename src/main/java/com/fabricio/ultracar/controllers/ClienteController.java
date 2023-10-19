@@ -61,11 +61,8 @@ public class ClienteController {
     @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity destroy(@PathVariable String id){
-        List<Cliente> clientes = clienteRepository.findAllById(id);
-        Cliente cliente = clientes.get(0);
-        cliente.setAtivo(false);
-        clienteRepository.save(cliente);
-        return ResponseEntity.ok(cliente);
+        clienteRepository.deleteAllById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

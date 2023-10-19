@@ -15,4 +15,6 @@ public interface OrdemDeServicoRepository extends MongoRepository<OrdemDeServico
     List<OrdemDeServico> findAllById(String id);
 
     Page<OrdemDeServico> findAllByAtivoTrue(Pageable paginacao);
+
+	void deleteAllById(String id);
 }

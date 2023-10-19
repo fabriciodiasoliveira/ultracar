@@ -84,11 +84,8 @@ public class CarroController {
     @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity destroy(@PathVariable String id){
-        List<Carro> carros = carroRepository.findAllById(id);
-        Carro carro = carros.get(0);
-        carro.setAtivo(false);
-        carroRepository.save(carro);
-        return ResponseEntity.ok(carro);
+        carroRepository.deleteAllById(id);;
+        return ResponseEntity.noContent().build();
     }
 
 }

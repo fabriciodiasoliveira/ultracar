@@ -1,4 +1,4 @@
-package com.fabricio.ultracar.domain.Carro;
+package com.fabricio.ultracar.domain.servicos;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,28 +18,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Document(collection = "carros")
+@Document(collection = "servicos")
 @EqualsAndHashCode(of = "id")
-public class Carro {
-    public Carro(@Valid DadosCadastroCarro dados) {
+public class Servico {
+    public Servico(@Valid DadosCadastroServico dados) {
         idCliente = dados.idCliente();
-        modelo = dados.modelo();
-        placa = dados.placa();
-        ativo = true;
+        servico = dados.servico();
+        acao = dados.acao();
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String idCliente;
-    private String modelo;
-    private String placa;
-    private boolean ativo;
-    public void setDados(@Valid DadosAlteracaoCarro dados) {
-        if(dados.modelo() != null){
-            modelo = dados.modelo();
-        }
-        if(dados.placa() != null){
-            placa = dados.placa();
-        }
-    }
+    private String servico;
+    private String acao;
 }

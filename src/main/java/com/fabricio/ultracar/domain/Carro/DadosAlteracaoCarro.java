@@ -6,7 +6,6 @@ public record DadosAlteracaoCarro(
     @NotNull
     String id,
     String modelo, 
-    String cor,
     String placa) {
     
 }
