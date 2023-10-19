@@ -9,16 +9,19 @@ GET
 <br>&nbsp;    "senha":"ultracar"
 <br>}
 <br>
-<br>Todos os outros endpoints exigem o login. O token retornado precisa estar no cabeçalho Bearer.
+<br>Todos os outros endpoints exigem o login. O token retornado precisa estar no cabeçalho Autorization indicados como Bearer.
 Endpoint para a realização do login. É público.
 ### cadastro de ordem de serviço
 POST
 <br>http://localhost:8080/servicos
 <br>{
-<br>&nbsp;	"carro_id":40,
-<br>&nbsp;	"cliente_id":"60",
-<br>&nbsp;	"servicos":"Pobrema",
-<br>&nbsp;	"observacoes":"Resolvido"
+		<br>&nbsp;"carro_id": "653147cd1240b67230276e4b",
+		<br>&nbsp;"funcionario": "Nostradamus",
+		<br>&nbsp;"servicos": "Aconteceu um problema",
+		<br>&nbsp;"observacoes": "Voltou",
+		<br>&nbsp;"valor": "0",
+		<br>&nbsp;"data": "2023-10-18T15:10:24.603598227",
+		<br>&nbsp;"ativo": true
 <br>}
 <br>
 <br>
@@ -29,9 +32,11 @@ Endpoint para a realização do cadastro de Ordens de Serviço
 POST
 <br>http://localhost:8080/clientes
 <br>{
-	<br>&nbsp;"nome":"Gratak Norville",
-	<br>&nbsp;"identidade":"481",
-	<br>&nbsp;"endereco":"Rua das lindezas"
+	<br>&nbsp;"nome": "Darwin Evoluilton",
+	<br>&nbsp;"identidade":"589",
+	<br>&nbsp;"email":"oi@oi.com",
+	<br>&nbsp;"telefone":"12534",
+	<br>&nbsp;"endereco":"Rua do gato persa"
 <br>}
 <br>Cadastro de um novo cliente.
 
@@ -84,7 +89,7 @@ PUT
 	<br>&nbsp;"endereco": "Rua das ervilhas"
 <br>}
 <br>Endpoint para alterar o cliente
-<br>É obrigatório o id do cliente
+<br>É obrigatório o id do cliente, mas os outros campos não.
 ### listar carros com paginação
 GET
 <br>http://localhost:8080/carros/paginacao
@@ -101,3 +106,60 @@ GET
 DELETE
 <br>http://localhost:8080/carros/{id}
 <br>Endpoint para a deleção de um carro
+### listar clientes
+GET
+<br>Endpoint para obter uma lista de clientes;
+### alterar cliente
+PUT
+<br>http://localhost:8080/clientes
+<br>{
+	<br>&nbsp;"id": "65312cc9fbf5b1702cf3d1ad",
+	<br>&nbsp;"nome": "Darwin Evoluilton",
+	<br>&nbsp;"identidade":"677",
+	<br>&nbsp;"email":"oi@oi.com",
+	<br>&nbsp;"telefone":"4582",
+	<br>&nbsp;"endereco":"Rua do sapato"
+<br>}
+<br>Endpoint para alterar um cliente. O id é obrigatório.
+### deletar cliente
+DELETE
+<br>http://localhost:8080/clientes/{id}
+<br>Endpoint para a deleção de um cliente.
+### listar um cliente
+GET
+<br>http://localhost:8080/clientes/{id}
+<br>Endpoint para exibir um cliente expecífico
+### listar os carros de um cliente
+GET
+<br>http://localhost:8080/carros/cliente/{id}
+<br>Endpoint para listar os carros de um cliente.
+### alterar uma ordem de serviços
+PUT
+<br>http://localhost:8080/servicos
+<br>{
+	<br>&nbsp;"id": "65301f7b98fbde60817e8829",
+	<br>&nbsp;"carro_id": "653014a5ed1e2e23e3795f7e",
+	<br>&nbsp;"servicos": "chimarruts",
+	<br>&nbsp;"observacoes": "Isto é incrível",
+	<br>&nbsp;"valor": "10.000",
+	<br>&nbsp;"data": "2023-10-18T15:10:03.003323521",
+	<br>&nbsp;"funcionario": "Sô zé"
+<br>}
+<br>Endpoint para alterar uma ordem de serviço.
+<br>O id é obrigatório, e os outros campos são opcionais.
+### listar ordens de serviços
+GET
+<br>http://localhost:8080/servicos
+<br>Endpoint para listar ordens de serviços - todas as do sistema.
+### deletar uma ordem de serviço
+DELETE
+<br>http://localhost:8080/servicos/{id}
+<br>Endpoint para deletar uma ordem de serviços.
+### obter uma ordem de serviços
+GET
+<br>http://localhost:8080/servicos/
+<br>Endpoint para mostrar uma ordem de serviços.
+### listar ordens de serviço do carro
+GET
+<br>http://localhost:8080/servicos/carro/{id}
+<br>Endpoint para obter as ordens de serviços associadas a um carro.
