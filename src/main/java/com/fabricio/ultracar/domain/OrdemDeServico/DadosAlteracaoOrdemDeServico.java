@@ -7,6 +7,7 @@ public record DadosAlteracaoOrdemDeServico(
     String id, 
     String servicos, 
     String observacoes, 
-    String valor) {
+    String valor,
+    String funcionario) {
     
 }

@@ -34,6 +34,7 @@ public class OrdemDeServico {
         else{
             valor = "0";
         }
+        funcionario = dados.funcionario();
         data = LocalDateTime.now().toString();
         ativo = true;
     }
@@ -42,6 +43,7 @@ public class OrdemDeServico {
     private String id;
 	private String carro_id;
     private String idCliente;
+    private String funcionario;
     private String servicos;
     private String observacoes;
     private String valor;
@@ -49,8 +51,15 @@ public class OrdemDeServico {
     private boolean ativo;
     
     public void setDados(@Valid DadosAlteracaoOrdemDeServico dados) {
-        servicos = dados.servicos();
-        observacoes = dados.observacoes();
+        if(dados.servicos() != null){
+            servicos = dados.servicos();
+        }
+        if(dados.observacoes() != null){
+            observacoes = dados.observacoes();
+        }
+        if(dados.funcionario() != null){
+            funcionario = dados.funcionario();
+        }
         if(dados.valor() != null){
             valor = dados.valor();
         }

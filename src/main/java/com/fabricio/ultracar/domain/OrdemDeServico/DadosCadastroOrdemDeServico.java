@@ -9,7 +9,8 @@ public record DadosCadastroOrdemDeServico(
     String idCliente, 
     @NotNull
     String servicos,
-    String observacoes, 
-    String valor) {
+    String observacoes,
+    String valor,
+    String funcionario) {
     
 }

@@ -56,6 +56,7 @@ PUT
 	<br>&nbsp;"placa": "MUU-123BOI"
 <br>}
 <br>Endpoint para alteração de um carro. Não é possível mudar o id do cliente.
+<br>Obrigatório o id do carro
 ### listar carros
 GET
 <br>http://localhost:8080/carros
@@ -67,7 +68,7 @@ GET
 ### deletar um carro
 DELETE
 <br>http://localhost:8080/carros/652ec54de2940113af322289
-<br>Endpoint para eliminar um carro. Realiza exclusão lógica - apenas o desativa sem o excluir.
+<br>Endpoint para eliminar um carro. Realiza exclusão de um carro.
 ### listar clientes
 GET
 <br>http://localhost:8080/clientes
@@ -75,6 +76,7 @@ GET
 ### alterar cliente
 PUT
 <br>http://localhost:8080/clientes
+<br>PUT
 <br>{
 	<br>&nbsp;"id": "652e90f2a35ec97081881ebc",
 	<br>&nbsp;"nome": "Darwin Evoluilton",
@@ -82,3 +84,17 @@ PUT
 	<br>&nbsp;"endereco": "Rua das ervilhas"
 <br>}
 <br>Endpoint para alterar o cliente
+<br>É obrigatório o id do cliente
+### listar carros com paginação
+GET
+<br>http://localhost:8080/carros/paginacao
+<br>Lista carros com paginação - útil para obter a lista completa de carros na oficina
+### listar carros
+GET
+<br>http://localhost:8080/carros
+<br>Útil para obter a lista completa de carros na oficina - sem paginação
+### listar um carro
+GET
+<br>http://localhost:8080/carros/{id}
+<br>Obtendo um único carro na oficina
+}
